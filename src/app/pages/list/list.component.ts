@@ -14,18 +14,26 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit{
   cards: Card[] = [];
+  offset = 0;
   cardService: CardService = inject(CardService);
 
   onScroll() {
-    
-  }
+    this.offset += 100;
+    this.searchCards();
+    }
+  
+    searchCards(){
+      this.cardService.getCards(this.offset).subscribe(res => {
+        this.cards = [...this.cards, ...res];
+  
+      })
+    }
 
-  ngOnInit(): void {
-    this.cardService.getCards().subscribe(res => {
-      this.cards = res;
-      console.log(this.cards);
-    })
-  }
+    ngOnInit(): void {
+      this.searchCards();
+    }
+
+  
 }
