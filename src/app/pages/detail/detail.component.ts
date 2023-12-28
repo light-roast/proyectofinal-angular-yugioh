@@ -1,19 +1,26 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CardService } from '../../services/card.service';
+import { HttpClientModule } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { Card } from '../../interfaces/card.interface';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, HttpClientModule, NgIf, CommonModule],
+  providers: [CardService],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'
 })
 export class DetailComponent implements OnInit{
   id!: string;
-  constructor(private route: ActivatedRoute) {}
+  card$!: Observable<Card>;
+  constructor(private route: ActivatedRoute, private cardService: CardService) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';
-    console.log(this.id);
+    this.card$ = this.cardService.getCard(this.id);
   }
 }

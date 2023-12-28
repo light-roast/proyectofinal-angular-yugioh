@@ -1,6 +1,7 @@
 export interface Card {
     id:          number;
     name:        string;
+    archetype:   string;
     type:        string;
     frameType:   string;
     desc:        string;

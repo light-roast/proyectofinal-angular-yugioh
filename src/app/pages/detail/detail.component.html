@@ -1,16 +1,25 @@
 
-<div class="detail-card">
+<div class="detail-card" 
+*ngIf="card$ | async as card">
     <div class="top">
-        <img src="https://images.ygoprodeck.com/images/cards/15480588.jpg" />
+        <img [src]="card.card_images[0].image_url" />
     </div>
     <div class="bottom">
-        <h2>Nombre de la carta</h2>
+        <h2>{{card.name}}</h2>
         <div class="item">
-            <p class="description">Descripción</p>
+            <p class="description">{{card.desc}}</p>
         </div>
         <div class="item">
-            <h3 class="title">Título</h3>
-            <p class="description">Descripción</p>
+            <h3 class="title">Type</h3>
+            <p class="description">{{card.type}}</p>
+        </div>
+        <div class="item" *ngIf="card.archetype !== undefined">
+            <h3 class="title">Archetype</h3>
+            <p class="description">{{card.archetype}}</p>
+        </div>
+        <div class="item">
+            <h3 class="title">Race</h3>
+            <p class="description">{{card.race}}</p>
         </div>
     <table class="table">
         <thead>
