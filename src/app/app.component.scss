@@ -1,0 +1,15 @@
+// allows to style the app-root in the index.html root file
+:host {
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    background-color: blueviolet;
+    flex: 1;
+    position: relative;
+    margin: 0;
+}
