@@ -39,6 +39,7 @@ export class ListComponent implements OnInit{
       this.cardTextFC.valueChanges.pipe(
         debounceTime(1000)
       ).subscribe((res) => {
+        this.offset = 0;
         this.cards=[];
         this.searchCards(res)
       });
