@@ -2,7 +2,12 @@
     <input class="form-control" 
         type="text" 
         placeholder="Buscar una carta"/>
-        <div class="cards">
+        <div 
+        class="cards"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="100"
+        (scrolled)="onScroll()">
             <app-card *ngFor="let card of cards" [card]="card"></app-card>
         </div>
         
