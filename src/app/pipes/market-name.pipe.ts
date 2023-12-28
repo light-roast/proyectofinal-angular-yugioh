@@ -14,7 +14,7 @@ export class MarketNamePipe implements PipeTransform {
   ];
     
         
-  transform(value: unknown): string {
+  transform(value: string): string {
     const market = this.markets.find(m => m.id === value);
     return market?.name || '';
   }
