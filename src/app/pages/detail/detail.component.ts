@@ -5,11 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Card } from '../../interfaces/card.interface';
 import { CommonModule, NgIf } from '@angular/common';
+import { MarketNamePipe } from '../../pipes/market-name.pipe';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [RouterModule, HttpClientModule, NgIf, CommonModule],
+  imports: [RouterModule, HttpClientModule, NgIf, CommonModule, MarketNamePipe],
   providers: [CardService],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'

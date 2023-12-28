@@ -1,3 +1,6 @@
+<nav>
+    <button type="button" class="btn btn-secondary rounded" [routerLink]="['']" routerLinkActive="active" >Return</button>
+</nav>
 
 <div class="detail-card" 
 *ngIf="card$ | async as card">
@@ -29,9 +32,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td scope="row">Market</td>
-                <td>Price</td>
+            <!-- keyvalue serves the purpose of make an object iterable, in this case: card.card_prices[0], wich turns to be an object of prices -->
+            <tr *ngFor="let market of card.card_prices[0] | keyvalue">
+                <td scope="row">{{market.key | marketName}}</td>
+                <td>{{market.value}}</td>
             </tr>
         </tbody>
     </table>
